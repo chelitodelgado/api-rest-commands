@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 });
 
 // Mostrar 10 registros por pagina
-router.get('/v1/commands', async ( req, res) => {
+router.get('/v1/commands/', async ( req, res) => {
     const limit = parseInt( req.query.limit || 450 );
     const page  = parseInt( req.query.page || 1 );
     const commands = await Command.paginate( {}, { limit, page } );
@@ -18,7 +18,7 @@ router.get('/v1/commands', async ( req, res) => {
 });
 
 // Insertar registros
-router.post('/v1/commands', async (req, res) => {
+router.post('/v1/commands/', async (req, res) => {
     console.log(req.body);
     const newCommand = new Command( req.body );
     const commandSave =  await newCommand.save();
