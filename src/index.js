@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const PORT = process.env.PORT || 4000;
 
 const commandsRoutes = require('./routes/commands');
 
@@ -33,6 +34,6 @@ app.use((req, res, next) => {
 
 app.set('port', process.env.PORT || 4000);
 
-app.listen( app.get('port'), () =>{
+app.listen( PORT, () =>{
     console.log(`Server running http://localhost:${app.get('port')}`);
 });
