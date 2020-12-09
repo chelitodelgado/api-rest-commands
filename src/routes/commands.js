@@ -15,19 +15,31 @@ router.get('/', (req, res) => {
 });
 
 // Mostrar 10 registros por pagina
+<<<<<<< HEAD
 router.get('/v1/commands', async ( req, res) => {
+=======
+router.get('/v1/commands/', async ( req, res) => {
+    //const limit = parseInt( req.query.limit || 450 );
+    //const page  = parseInt( req.query.page || 1 );
+    //const commands = await Command.paginate( {}, { limit, page } );
+    //res.json( commands );
+>>>>>>> 706265269d8b5c783754ff0e741d49e29b632951
     try{
         const limit = parseInt( req.query.limit || 450 );
         const page  = parseInt( req.query.page || 1 );
         const commands = await Command.paginate( {}, { limit, page } );
         res.json( commands );
     }catch(error) {
+<<<<<<< HEAD
         res.status(500).send(error);
+=======
+        res.status(503).send(error)
+>>>>>>> 706265269d8b5c783754ff0e741d49e29b632951
     }
 });
 
 // Insertar registros
-router.post('/v1/commands', async (req, res) => {
+router.post('/v1/commands/', async (req, res) => {
     console.log(req.body);
     const newCommand = new Command( req.body );
     const commandSave =  await newCommand.save();
