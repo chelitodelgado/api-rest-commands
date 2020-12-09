@@ -4,17 +4,26 @@ var path = require('path');
 
 const Command = require('../model/Command');
 
+// Generic error handler used by all endpoints.
+function handleError(res, reason, message, code) {
+    console.log("ERROR: " + reason);
+    res.status(code || 500).json({"error": message});
+  }
+
 router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../home/index.html'));
-    // res.send("Bienvenido a mi api");
 });
 
 // Mostrar 10 registros por pagina
 router.get('/v1/commands', async ( req, res) => {
-    const limit = parseInt( req.query.limit || 450 );
-    const page  = parseInt( req.query.page || 1 );
-    const commands = await Command.paginate( {}, { limit, page } );
-    res.json( commands );
+    try{
+        const limit = parseInt( req.query.limit || 450 );
+        const page  = parseInt( req.query.page || 1 );
+        const commands = await Command.paginate( {}, { limit, page } );
+        res.json( commands );
+    }catch(error) {
+        res.status(500).send(error);
+    }
 });
 
 // Insertar registros
