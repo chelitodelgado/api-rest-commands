@@ -1,5 +1,5 @@
 
-<img src="src/img/chelitodelgado.jpg">
+<img width="700" src="https://github.com/chelitodelgado/lotedeimagenes/blob/main/src/chelitodelgado.jpg?raw=true">
 
 
 # API REST LINUX COMMANDS.
