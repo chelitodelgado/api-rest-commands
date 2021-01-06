@@ -16,5 +16,5 @@ app.use( commandsRoutes );
 app.set('port', process.env.PORT || 4000);
 
 app.listen( app.get('port'), () =>{
-    console.log(`Server running PORT:${app.get('port')}`);
+    console.log(`Server running PORT: http://localhost:${app.get('port')}`);
 });
